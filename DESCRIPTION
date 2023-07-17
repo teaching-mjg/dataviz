@@ -12,7 +12,8 @@ Depends:
 Imports:
     dplyr,
     ggplot2,
-    Hmisc
+    Hmisc,
+    magrittr
 Suggests: 
     knitr,
     rmarkdown

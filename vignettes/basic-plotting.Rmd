@@ -19,6 +19,8 @@ First load libraries.
 ```{r setup}
 library(dataviz)
 library(ggplot2)
+library(magrittr)
+library(dplyr)
 ```
 
 Examine data
@@ -53,3 +55,26 @@ ggplot(data_ala, aes(y=RT, x=Valence, colour=Valence, fill=Valence))+
                fun.args=list(conf.int=.95), show.legend = F)
 ```
 
+Let's imagine that we had data on the age of the participants: Younger vs Older
+
+```{r}
+data_ala_age <- data_ala %>% 
+  mutate(Age=ifelse(Participant %% 2, "Older", "Younger"))
+```
+
+Let's separate out the two groups of Age
+
+```{r, fig.width=7, fig.height=5}
+ggplot(data_ala_age, aes(y=RT, x=Valence, colour=Valence, fill=Valence))+
+  stat_summary(geom="bar", fun="mean", alpha=0.5)+
+  stat_summary(geom="line", fun="mean", aes(group=1), colour="black")+
+  stat_summary(geom='errorbar', width=0.3, fun.data = mean_cl_normal, 
+               fun.args=list(conf.int=.95), show.legend = F)+
+  stat_summary(geom='point', fun="mean", size=3, show.legend = F)+
+  facet_grid(~Age)
+```
+
+## Excercises
+
+1. How did we add colour? What additional code did we have to include?
+1. What element of a `ggplot` plots separate facets?
