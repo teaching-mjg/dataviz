@@ -4,6 +4,9 @@
     <loc>/404.html</loc>
   </url>
   <url>
+    <loc>/articles/basic-plotting.html</loc>
+  </url>
+  <url>
     <loc>/articles/index.html</loc>
   </url>
   <url>
@@ -17,6 +20,9 @@
   </url>
   <url>
     <loc>/reference/data_ala.html</loc>
+  </url>
+  <url>
+    <loc>/reference/dataviz-package.html</loc>
   </url>
   <url>
     <loc>/reference/hello.html</loc>

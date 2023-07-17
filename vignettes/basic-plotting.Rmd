@@ -1,0 +1,55 @@
+---
+title: "Basic Plotting"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Basic Plotting}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+First load libraries.
+
+```{r setup}
+library(dataviz)
+library(ggplot2)
+```
+
+Examine data
+
+```{r}
+data_ala
+```
+
+* Use the column names to specify what goes on the `y` axis and what goes on the `x` axis.
+* Use `stat_summary` to say that we don't want to plot the raw data, we want a summary statistic instead.
+* Use `geom` to say that we want a bar chart, and `fun` to say that we want the mean (as opposed to the median, say). 
+
+```{r}
+ggplot(data_ala, aes(y=RT, x=Valence))+
+  stat_summary(geom="bar", fun="mean")
+```
+
+We can add error bars
+
+```{r}
+ggplot(data_ala, aes(y=RT, x=Valence))+
+  stat_summary(geom="bar", fun="mean")+
+  stat_summary(geom='errorbar', width=0.3, fun.data = mean_cl_normal, fun.args=list(conf.int=.95))
+```
+
+We can use colour to distinguish the levels of Valence.
+
+```{r}
+ggplot(data_ala, aes(y=RT, x=Valence, colour=Valence, fill=Valence))+
+  stat_summary(geom="bar", fun="mean", alpha=0.5)+
+  stat_summary(geom='errorbar', width=0.3, fun.data = mean_cl_normal, 
+               fun.args=list(conf.int=.95), show.legend = F)
+```
+
