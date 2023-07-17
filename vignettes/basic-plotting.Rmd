@@ -98,16 +98,16 @@ ggplot(data_ala_age, aes(y=RT, x=Valence, colour=Valence, fill=Valence))+
   theme_apa()
 ```
 
-Let's add raw data points - see how this is overkill?
+Let's add raw data points
 
 ```{r, fig.width=7, fig.height=5}
-ggplot(data_ala_age, aes(y=RT, x=Valence, fill=Valence))+
-  geom_jitter(width=0.2, height=0, show.legend = F, aes(color=Valence, fill=Valence))+
+ggplot(data_ala_age, aes(y=RT, x=Valence, colour=Valence, fill=Valence))+
+  geom_jitter(width=0.2, height=0, show.legend = F)+
   stat_summary(geom="bar", fun="mean", alpha=0.5)+
-  stat_summary(geom="line", fun="mean", aes(group=1), colour="black")+
+  #stat_summary(geom="line", fun="mean", aes(group=1), colour="black")+
   stat_summary(geom='errorbar', width=0.3, fun.data = mean_cl_normal, 
-               fun.args=list(conf.int=.95), show.legend = F)+
-  stat_summary(geom='point', fun="mean", size=3, show.legend = F)+
+               fun.args=list(conf.int=.95), show.legend = F, lwd=1, color='grey50')+
+  #stat_summary(geom='point', fun="mean", size=3, show.legend = F)+
   facet_grid(~Age)+
   theme_apa()
 ```
@@ -120,9 +120,9 @@ ggplot(data_ala_age, aes(y=RT, x=Valence, fill=Valence))+
   geom_boxplot(width=0.25, fatten=0, show.legend = F)+
   #geom_dotplot(binaxis='y', binwidth=.025, stackdir='center', fill = "grey", dotsize=0.5, position=position_dodge(0.75)) +
   geom_jitter(width=0.05, height=0, alpha=0.2, show.legend = F)+
-  facet_grid(~Age)+
-  #theme_classic()+
-  theme_apa()
+  facet_grid(~Age)
+  #theme_classic()
+  #theme_apa()
 ```
 
 
