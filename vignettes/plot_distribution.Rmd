@@ -1,0 +1,29 @@
+---
+title: "Plot distributions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Plot distributions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(dataviz)
+library(ggplot2)
+```
+
+```{r}
+ggplot(data_ala, aes(x=RT, group=Valence, color=Valence, fill=Valence)) +
+    geom_density(alpha=0.5)+
+    facet_wrap(~Valence, nrow=3)+
+    scale_fill_manual(values=c("#F8766D", "#619CFF", "#00BA38" ))+
+    scale_color_manual(values=c("#F8766D", "#619CFF", "#00BA38" ))
+```
+
