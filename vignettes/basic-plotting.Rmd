@@ -10,8 +10,7 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.width=7, fig.height=5
+  comment = "#>"
 )
 ```
 
@@ -112,9 +111,18 @@ ggplot(data_ala_age, aes(y=RT, x=Valence, colour=Valence, fill=Valence))+
   theme_apa()
 ```
 
-There are better ways to represent the distribution of raw data points together with summary statistics.
+There are other ways to represent the distribution of raw data points together with summary statistics.
 
-```{r, fig.width=7, fig.height=5}
+In a violin plot, the violin is widest where the distribution peaks. The code is simple.
+
+```{r}
+ggplot(data_ala_age, aes(y=RT, x=Valence, fill=Valence))+
+  geom_violin(alpha=0.5)
+```
+
+We can add raw data, among other things (like a boxplot)
+
+```{r, fig.width=7, fig.height=7}
 ggplot(data_ala_age, aes(y=RT, x=Valence, fill=Valence))+
   geom_violin(alpha=0.5)+
   geom_boxplot(width=0.25, fatten=0, show.legend = F)+
