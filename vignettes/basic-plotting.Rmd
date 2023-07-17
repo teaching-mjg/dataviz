@@ -10,7 +10,8 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.width=7, fig.height=5
 )
 ```
 
@@ -66,6 +67,7 @@ data_ala_age <- data_ala %>%
 Let's imagine that younger people were quicker to respond.
 
 ```{r}
+set.seed(1)
 data_ala_age <- data_ala_age %>% 
   mutate(RT.adjustment=runif(n=nrow(data_ala_age), min=0, max=0.25)) %>% 
   mutate(RT=ifelse(Age=="Younger", RT-RT.adjustment, RT))
@@ -112,12 +114,13 @@ ggplot(data_ala_age, aes(y=RT, x=Valence, fill=Valence))+
 
 There are better ways to represent the distribution of raw data points together with summary statistics.
 
-```{r}
+```{r, fig.width=7, fig.height=5}
 ggplot(data_ala_age, aes(y=RT, x=Valence, fill=Valence))+
   geom_violin(alpha=0.5)+
   geom_boxplot(width=0.25, fatten=0, show.legend = F)+
   #geom_dotplot(binaxis='y', binwidth=.025, stackdir='center', fill = "grey", dotsize=0.5, position=position_dodge(0.75)) +
   geom_jitter(width=0.05, height=0, alpha=0.2, show.legend = F)+
+  facet_grid(~Age)+
   #theme_classic()+
   theme_apa()
 ```
@@ -133,8 +136,8 @@ apa_beeplot(
   , dv = "RT"
   , factors = c("Age", "Valence")
   , args_points = list(cex = 2, bg = c("skyblue4", "indianred3", "seagreen4"), col = "white")
-  , args_swarm = list(cex = 1.2)
-  , args_error_bars = list(length = 0.02, col = "grey20")
+  , args_swarm = list(cex = 1)
+  , args_error_bars = list(length = 0.2, col = "grey10")
 )
 
 apa_lineplot(
