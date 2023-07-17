@@ -1,6 +1,9 @@
 ---
 title: "Basic Plotting"
-output: rmarkdown::html_vignette
+output:
+  rmarkdown::html_vignette:
+    fig_width: 7
+    fig_height: 5
 vignette: >
   %\VignetteIndexEntry{Basic Plotting}
   %\VignetteEngine{knitr::rmarkdown}
@@ -74,7 +77,7 @@ data_ala_age <- data_ala_age %>%
 
 Let's separate out the two groups of Age
 
-```{r, fig.width=7, fig.height=5}
+```{r}
 ggplot(data_ala_age, aes(y=RT, x=Valence, colour=Valence, fill=Valence))+
   stat_summary(geom="bar", fun="mean", alpha=0.5)+
   stat_summary(geom="line", fun="mean", aes(group=1), colour="black")+
@@ -86,7 +89,7 @@ ggplot(data_ala_age, aes(y=RT, x=Valence, colour=Valence, fill=Valence))+
 
 Let's change the theme. This one is `theme_apa()` which is supposed to be APA-compliant. It comes from a package called `papaja`
 
-```{r, fig.width=7, fig.height=5}
+```{r}
 ggplot(data_ala_age, aes(y=RT, x=Valence, colour=Valence, fill=Valence))+
   stat_summary(geom="bar", fun="mean", alpha=0.5)+
   stat_summary(geom="line", fun="mean", aes(group=1), colour="black")+
@@ -99,7 +102,7 @@ ggplot(data_ala_age, aes(y=RT, x=Valence, colour=Valence, fill=Valence))+
 
 Let's add raw data points
 
-```{r, fig.width=7, fig.height=5}
+```{r}
 ggplot(data_ala_age, aes(y=RT, x=Valence, colour=Valence, fill=Valence))+
   geom_jitter(width=0.2, height=0, show.legend = F)+
   stat_summary(geom="bar", fun="mean", alpha=0.5)+
@@ -122,48 +125,16 @@ ggplot(data_ala_age, aes(y=RT, x=Valence, fill=Valence))+
 
 We can add raw data, among other things (like a boxplot)
 
-```{r, fig.width=7, fig.height=7}
+```{r}
 ggplot(data_ala_age, aes(y=RT, x=Valence, fill=Valence))+
   geom_violin(alpha=0.5)+
   geom_boxplot(width=0.25, fatten=0, show.legend = F)+
-  #geom_dotplot(binaxis='y', binwidth=.025, stackdir='center', fill = "grey", dotsize=0.5, position=position_dodge(0.75)) +
   geom_jitter(width=0.05, height=0, alpha=0.2, show.legend = F)+
   facet_grid(~Age)
-  #theme_classic()
-  #theme_apa()
 ```
 
 
 
-Papaja has some APA-related plot styles which look nice, but the syntax is different.
-
-```{r, fig.width=7, fig.height=5}
-apa_beeplot(
-  data = data_ala_age
-  , id = "Participant"
-  , dv = "RT"
-  , factors = c("Age", "Valence")
-  , args_points = list(cex = 2, bg = c("skyblue4", "indianred3", "seagreen4"), col = "white")
-  , args_swarm = list(cex = 1)
-  , args_error_bars = list(length = 0.2, col = "grey10")
-)
-
-apa_lineplot(
-  data = data_ala_age
-  , id = "Participant"
-  , dv = "RT"
-  , factors = c("Age", "Valence")
-  , args_points = list(cex = 2, bg = c("skyblue4", "indianred3", "seagreen4"), col = "white")
-  , args_error_bars = list(length = 0.02, col = "grey20")
-)
-
-apa_barplot(
-  data = data_ala_age
-  , id = "Participant"
-  , dv = "RT"
-  , factors = c("Age", "Valence")
-)
-```
 
 ## Excercises
 
