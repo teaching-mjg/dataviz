@@ -27,3 +27,16 @@ apa_barplot(
   , factors = c("Age", "Valence")
 )
 ```
+
+
+```{r}
+world <- map_data("world")
+ggplot() +
+  geom_map(
+    data = world, map = world,
+    aes(long, lat, map_id = region),
+    color = "black", fill = "lightgray", size = 0.1
+  ) +
+  theme_void()
+```
+

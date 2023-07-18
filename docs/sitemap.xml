@@ -13,6 +13,9 @@
     <loc>/articles/plot_distribution.html</loc>
   </url>
   <url>
+    <loc>/articles/plot_mc_data.html</loc>
+  </url>
+  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
@@ -22,10 +25,10 @@
     <loc>/reference/data_ala.html</loc>
   </url>
   <url>
-    <loc>/reference/dataviz-package.html</loc>
+    <loc>/reference/data_mc.html</loc>
   </url>
   <url>
-    <loc>/reference/hello.html</loc>
+    <loc>/reference/dataviz-package.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
