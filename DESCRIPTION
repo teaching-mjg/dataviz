@@ -9,7 +9,6 @@ Description: More about what it does (maybe more than one line) Use four
 License: GPL (>= 3)
 Depends: 
     R (>= 2.10),
-    tidyverse
 Imports:
     beeswarm,
     dplyr,

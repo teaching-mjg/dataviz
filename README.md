@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of dataviz is to …
+The goal of dataviz is to make it easier to learn `ggplot`
 
 ## Installation
 
@@ -18,24 +18,18 @@ You can install the development version of dataviz from
 devtools::install_github("teaching-mjg/dataviz", build_vignettes=TRUE)
 ```
 
+## Reference
+
+A website with reference material for the package is at
+<https://teaching-mjg.github.io/dataviz/>. See the drop-down called
+“Articles” that lists tutorials.
+
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is how to start using dataviz:
 
 ``` r
 library(dataviz)
-#> Loading required package: tidyverse
-#> ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-#> ✔ dplyr     1.1.2     ✔ readr     2.1.4
-#> ✔ forcats   1.0.0     ✔ stringr   1.5.0
-#> ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-#> ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-#> ✔ purrr     1.0.1     
-#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
-#> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-## basic example code
 ```
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
