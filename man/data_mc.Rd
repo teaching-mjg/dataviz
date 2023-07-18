@@ -3,9 +3,9 @@
 \docType{data}
 \name{data_mc}
 \alias{data_mc}
-\title{RT and Accuracy for Videos in different Valences and different repetitions}
+\title{RT and Accuracy for Videos}
 \format{
-A data frame with 273 rows and 3 variables:
+A data frame:
 \describe{
   \item{pp}{An identifier for the participant}
   \item{Age}{Age}

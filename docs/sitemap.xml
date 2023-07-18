@@ -16,6 +16,9 @@
     <loc>/articles/plot_mc_data.html</loc>
   </url>
   <url>
+    <loc>/articles/plot_raincloud.html</loc>
+  </url>
+  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
@@ -25,7 +28,13 @@
     <loc>/reference/data_ala.html</loc>
   </url>
   <url>
+    <loc>/reference/data_ldt.html</loc>
+  </url>
+  <url>
     <loc>/reference/data_mc.html</loc>
+  </url>
+  <url>
+    <loc>/reference/data_tania.html</loc>
   </url>
   <url>
     <loc>/reference/dataviz-package.html</loc>
