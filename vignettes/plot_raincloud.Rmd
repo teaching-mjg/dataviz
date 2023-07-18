@@ -55,7 +55,7 @@ geom_flat_violin=function (mapping = NULL, data = NULL, stat = "ydensity", posit
 
 ```
 
-```{r}
+```{r, fig.width=7, fig.height=5}
 rain_height <- .1
 
 ggplot(data_ldt, aes(x = "", y = rt, fill = language)) +
@@ -77,8 +77,8 @@ ggplot(data_ldt, aes(x = "", y = rt, fill = language)) +
   scale_colour_brewer(palette = "Dark2") +
   theme_minimal() +
   theme(panel.grid.major.y = element_blank(), legend.position = c(0.8, 0.8), legend.background = element_rect(fill = "white", color = "white"))+
-  labs(title="Reaction time distributions for the lexical decision task from monolingual and bilingual readers", 
-       subtitle = "Bilinguals are slower than monolinguals to correctly identify non-words but not to identify real words")
+  labs(title="Reaction time distributions for the lexical decision task", 
+       subtitle = "Bilinguals are slower than monolinguals to correctly\nidentify non-words but not to identify real words")
 
 ```
 
