@@ -16,7 +16,8 @@ Imports:
     Hmisc,
     magrittr,
     maps,
-    papaja
+    papaja,
+    plyr
 Suggests: 
     knitr,
     rmarkdown
