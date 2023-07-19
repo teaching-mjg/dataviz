@@ -10,15 +10,10 @@ License: GPL (>= 3)
 Depends: 
     R (>= 2.10),
 Imports:
-    beeswarm,
-    dplyr,
-    ggplot2,
     Hmisc,
-    magrittr,
-    maps,
-    papaja,
-    plyr,
-    rmarkdown
+    learnr,
+    rmarkdown,
+    shiny
 Suggests: 
     knitr
 VignetteBuilder: 
