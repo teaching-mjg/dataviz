@@ -10,15 +10,16 @@ The goal of dataviz is to make it easier to learn `ggplot`
 
 ## Installation
 
-You can install the development version of dataviz from
+You can install dataviz from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("teaching-mjg/dataviz", build_vignettes=TRUE)
+# install.packages("remotes")
+remotes::install_github("teaching-mjg/dataviz")
 ```
 
-## Reference
+## Contents of `dataviz`
+* various psychology data sets
 
 A website with reference material for the package is at
 <https://teaching-mjg.github.io/dataviz/>. See the drop-down called
