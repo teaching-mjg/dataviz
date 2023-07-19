@@ -17,10 +17,10 @@ Imports:
     magrittr,
     maps,
     papaja,
-    plyr
-Suggests: 
-    knitr,
+    plyr,
     rmarkdown
+Suggests: 
+    knitr
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
