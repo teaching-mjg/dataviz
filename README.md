@@ -21,10 +21,6 @@ remotes::install_github("teaching-mjg/dataviz")
 ## Contents of `dataviz`
 * various psychology data sets
 
-A website with reference material for the package is at
-<https://teaching-mjg.github.io/dataviz/>. See the drop-down called
-“Articles” that lists tutorials.
-
 ## Example
 
 This is how to start using dataviz:
