@@ -18,3 +18,10 @@ usethis::use_package("packagename")           # adds package to Depends
 usethis::use_tidy_description()
 
 usethis::use_tutorial("<name-of-learnr-file>", "<Title You'd Like the User to See>")
+
+devtools::document()                          # roxygen will flesh out the .Rd file using data from the DESCRIPTION.
+
+devtools::load_all()
+
+fs::path_package("inst", "slides", "slides.qmd", package = "dataviz")
+file.edit(fs::path_package("inst", "slides", "slides.qmd", package = "dataviz"))
