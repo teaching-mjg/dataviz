@@ -15,23 +15,35 @@ knitr::opts_chunk$set(
 
 # dataviz
 
-<!-- badges: start -->
-<!-- badges: end -->
-
-The goal of dataviz is to make it easier to learn `ggplot`
+The goal of dataviz is to make it easier to 
+learn exploratory data analysis in R using`ggplot`
 
 ## Installation
 
-You can install the development version of dataviz from [GitHub](https://github.com/) with:
+You can install dataviz from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("teaching-mjg/dataviz", build_vignettes=TRUE)
+# install.packages("remotes")
+remotes::install_github("teaching-mjg/dataviz")
 ```
 
-## Reference
+Or, if you want the vignettes:
 
-A website with reference material for the package is at [https://teaching-mjg.github.io/dataviz/](https://teaching-mjg.github.io/dataviz/). See the drop-down called "Articles" that lists tutorials.
+``` r
+# install.packages("remotes")
+remotes::install_github("teaching-mjg/dataviz", build_vignettes=TRUE)
+```
+
+If you're using AppsAnywhere, add 
+`lib="C:/ProgramData/R/win-library/4.2"`
+``` r
+# install.packages("remotes")
+remotes::install_github("teaching-mjg/dataviz", lib="C:/ProgramData/R/win-library/4.2")
+remotes::install_github("teaching-mjg/dataviz", build_vignettes=TRUE, lib="C:/ProgramData/R/win-library/4.2")
+```
+<!-- ## Reference -->
+
+<!-- A website with reference material for the package is at [https://teaching-mjg.github.io/dataviz/](https://teaching-mjg.github.io/dataviz/). See the drop-down called "Articles" that lists tutorials. -->
 
 ## Example
 
@@ -41,6 +53,9 @@ This is how to start using dataviz:
 library(dataviz)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
+Then if you installed the vignettes:
 
+```{r}
+browseVignettes(package="dataviz")
+```
 
