@@ -9,6 +9,9 @@ format:
     preview-link: auto
     fig-width: 7
     fig-height: 4
+    toc: false
+    toc-depth: 2
+    number-sections: true
 execute: 
   echo: true
 ---
@@ -225,7 +228,8 @@ But, beware _premature optimisation_
 
 ## Multi-factorial data
 
-- `data_ldt` from the Lexical Decision Task
+- `data_ldt` from the Lexical Decision Task is provided by the `dataviz` package, so you don't have to read it in, it's already there
+- eyeball the first ten rows of any dataset by typing the name of the dataset
 
 ```{r}
 data_ldt
@@ -233,11 +237,15 @@ data_ldt
 
 --- 
 
+- you can ask for a `summary` of any dataset
+
 ```{r}
 summary(data_ldt)
 ```
 
 ---
+
+- how many participants in each cell of the design?
 
 ```{r}
 with(data_ldt, table(language, condition))
@@ -245,11 +253,14 @@ with(data_ldt, table(language, condition))
 
 ---
 
-- Facets are really good for data with more than one factor
+- `facet`s are really good for data with more than one factor
 
-- Notice that this establishes the axes and facets but doesn't show any data
+<!-- - Notice that this establishes the axes and facets but doesn't show any data.  -->
+- "monolingual" is one facet; "bilingual" is the other facet
 
 ```{r}
+#| fig-width: 3
+#| fig-height: 2
 ggplot(data_ldt, aes(y=rt, x=condition))+
   facet_wrap(~language)
 ```
@@ -286,7 +297,7 @@ ggplot(data_ldt, aes(y=rt, x=condition, colour=condition))+
 
 ---
 
-I like to see the mean
+I like to see the mean overlaid on violins
 
 ```{r}
 ggplot(data_ldt, aes(y=rt, x=condition, colour=condition))+
@@ -297,12 +308,14 @@ ggplot(data_ldt, aes(y=rt, x=condition, colour=condition))+
 
 ---
 
-Adding a line joining the means can help make effects clearer
+Adding a line joining the means can help make interactions clearer
 
 ```{r}
+#| fig-width: 6
+#| fig-height: 3
 ggplot(data_ldt, aes(y=rt, x=condition, colour=condition))+
   facet_wrap(~language)+
-  geom_violin(aes(fill=condition), alpha=0.5)+
+  geom_violin(aes(fill=condition), alpha=0.5, show.legend = F)+
   stat_summary(fun=mean, show.legend =FALSE)+
   stat_summary(geom='line', fun=mean, aes(group=1), colour='black')
 ```
@@ -312,7 +325,8 @@ ggplot(data_ldt, aes(y=rt, x=condition, colour=condition))+
 I want to see how the distributions overlap
 
 ```{r}
-ggplot(data_ldt, aes(x=rt, group=interaction(condition, language), fill=condition))+
+ggplot(data_ldt, 
+       aes(x=rt, group=interaction(condition, language), fill=condition))+
   facet_wrap(~language)+
   geom_density()
 ```
@@ -321,7 +335,14 @@ ggplot(data_ldt, aes(x=rt, group=interaction(condition, language), fill=conditio
 
 I want to see how the distributions overlap in the same facet
 
-```{r}
+- so I comment out the request for different facets using hash (#) at the start of line 4: now R ignores that line
+
+- output in next slide
+
+```{r, eval=F}
+#| fig-width: 4
+#| fig-height: 3
+
 ggplot(data_ldt, 
        aes(x=rt, 
            fill=interaction(condition, language)))+
@@ -331,6 +352,81 @@ ggplot(data_ldt,
   theme_bw()+theme(panel.grid = element_blank())
 ```
 
-## 3 factors with `data_mc`
+---
 
-is next up
+I want to see how the distributions overlap in the same facet
+
+```{r, eval=T, echo=F}
+#| fig-width: 6
+#| fig-height: 3
+
+ggplot(data_ldt, 
+       aes(x=rt, 
+           fill=interaction(condition, language)))+
+  #facet_wrap(~language)+
+  geom_density(alpha=0.5)+
+  scale_fill_discrete(name='condition')+
+  theme_bw()+theme(panel.grid = element_blank())
+```
+
+## A tidier way of building a plot in layers (scroll down)
+
+- assignment yields no output
+
+```{r}
+myaxes = ggplot(data_ldt, aes(y=rt,  x=condition, fill=language))
+```
+
+- stating the name (myaxes) yields just the axes
+
+```{r}
+myaxes
+```
+
+- yields the violins
+
+```{r}
+myaxes + geom_violin()
+```
+
+- yields the violins and facets
+
+```{r}
+myaxes + geom_violin() + facet_wrap(~language)
+```
+
+So you can write the plot like this, which some people find much easier to write
+
+```{r}
+# the next 3 lines are all assignments so they don't produce output
+myaxes = ggplot(data_ldt, aes(y=rt,  x=condition, fill=language))
+myplot = myaxes + geom_violin()
+myplot = myplot + facet_wrap(~language)
+# the next line produces the whole plot as output
+myplot
+```
+
+
+## I want to export my plot
+
+
+- I made my plot in R - now I want to save it as a png file so I can include it in my manuscript.
+
+- First run the code that generates the plot
+
+```{r}
+#| eval: false
+# the next 3 lines are all assignments so they don't produce output
+myaxes = ggplot(data_ldt, aes(y=rt,  x=condition, fill=language))
+myplot = myaxes + geom_violin()
+myplot = myplot + facet_wrap(~language)
+# the next line produces the whole plot as output
+myplot
+```
+
+- now we can say `ggsave` which saves the most recently generated plot to file.
+
+```{r}
+ggsave(filename = "Figure1.png", width=7, height=4)
+```
+
