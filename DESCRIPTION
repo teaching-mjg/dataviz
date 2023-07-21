@@ -15,7 +15,6 @@ Imports:
     ggplot2,
     gt,
     Hmisc,
-    kableExtra,
     knitr,
     learnr,
     magrittr,
