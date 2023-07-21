@@ -13,7 +13,9 @@ Imports:
     dplyr,
     fs,
     ggplot2,
+    gt,
     Hmisc,
+    knitr,
     learnr,
     magrittr,
     papaja,
@@ -23,8 +25,6 @@ Imports:
     rsconnect,
     shiny,
     tidyr
-Suggests: 
-    knitr
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

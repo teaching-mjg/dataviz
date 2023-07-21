@@ -7,6 +7,8 @@ format:
     show-slide-number: all
     scrollable: true
     preview-link: auto
+    fig-width: 7
+    fig-height: 4
 execute: 
   echo: true
 ---
@@ -79,3 +81,257 @@ Visit
 ---
 
 ![](Screenshot from 2023-07-21 05-26-02.png)
+
+## Build a plot in layers
+
+```{r}
+library(dataviz)
+library(ggplot2)
+library(knitr)
+library(kableExtra)
+library(magrittr)
+```
+
+```{r}
+data_ala
+```
+
+---
+
+Notice that this establishes the axes but doesn't show any data
+
+```{r}
+ggplot(data_ala, aes(y=RT, x=Valence))
+```
+
+---
+
+Ask for a boxplot by adding a layer
+
+```{r}
+ggplot(data_ala, aes(y=RT, x=Valence)) +
+  geom_boxplot()
+```
+
+---
+
+Ask for a violin plot instead by changing the `geom`
+
+
+```{r}
+ggplot(data_ala, aes(y=RT, x=Valence)) +
+  geom_violin()
+```
+
+---
+
+Sometimes it's easier to compare things in the other orientation. Add a layer that asks for the coordinates to be flipped.
+
+```{r}
+ggplot(data_ala, aes(y=RT, x=Valence)) +
+  geom_violin() +
+  coord_flip()
+```
+
+---
+
+There's usually more than one way to achieve the same thing. Here we swap x and y instead of saying `coord_flip`
+
+```{r}
+ggplot(data_ala, aes(y=Valence, x=RT)) +
+  geom_violin() 
+```
+
+---
+
+Violins represent the same data twice. Compare with a density plot. Violins are doubled-up density plots.
+
+```{r}
+ggplot(data_ala, aes(x=RT)) +
+  geom_density() +
+  facet_wrap(~Valence, nrow=3)
+```
+
+---
+
+Colour helps
+
+```{r}
+ggplot(data_ala, aes(x=RT, fill=Valence)) +
+  geom_density() +
+  facet_wrap(~Valence, nrow=3)
+```
+
+---
+
+Some distributions are easier to tell apart when overlaid
+
+```{r}
+ggplot(data_ala, aes(x=RT, fill=Valence)) +
+  geom_density()
+```
+
+---
+
+See-through is controlled by `alpha`
+
+```{r}
+ggplot(data_ala, aes(x=RT, fill=Valence)) +
+  geom_density(alpha=0.5)
+```
+
+---
+
+Ask for a different colour palette
+
+```{r}
+ggplot(data_ala, aes(x=RT, fill=Valence)) +
+  geom_density(alpha=0.5)+
+  scale_fill_brewer(palette = "Set1")
+```
+
+---
+
+There are lots of palettes
+
+```{r}
+ggplot(data_ala, aes(x=RT, fill=Valence)) +
+  geom_density(alpha=0.5)+
+  scale_fill_hue()
+```
+
+---
+
+Fine control is possible
+
+```{r}
+ggplot(data_ala, aes(x=RT, fill=Valence)) +
+  geom_density(alpha=0.5)+
+  scale_fill_hue(l=40)
+```
+
+---
+
+But, beware _premature optimisation_
+
+* It's all too easy to get lost down a rabbit-hole in `ggplot`
+
+* R is pretty good at choosing sensible values for you 
+
+* Stick to the defaults at first
+
+* Go __broad__ before going __deep__
+
+---
+
+## Multi-factorial data
+
+- `data_ldt` from the Lexical Decision Task
+
+```{r}
+data_ldt
+```
+
+--- 
+
+```{r}
+summary(data_ldt)
+```
+
+---
+
+```{r}
+with(data_ldt, table(language, condition))
+```
+
+---
+
+- Facets are really good for data with more than one factor
+
+- Notice that this establishes the axes and facets but doesn't show any data
+
+```{r}
+ggplot(data_ldt, aes(y=rt, x=condition))+
+  facet_wrap(~language)
+```
+
+---
+
+Quick and dirty first
+
+```{r}
+ggplot(data_ldt, aes(y=rt, x=condition))+
+  facet_wrap(~language)+
+  geom_boxplot()
+```
+
+---
+
+Add colour
+
+```{r}
+ggplot(data_ldt, aes(y=rt, x=condition, colour=condition))+
+  facet_wrap(~language)+
+  geom_boxplot()
+```
+
+---
+
+Maybe violins
+
+```{r}
+ggplot(data_ldt, aes(y=rt, x=condition, colour=condition))+
+  facet_wrap(~language)+
+  geom_violin(aes(fill=condition), alpha=0.5)
+```
+
+---
+
+I like to see the mean
+
+```{r}
+ggplot(data_ldt, aes(y=rt, x=condition, colour=condition))+
+  facet_wrap(~language)+
+  geom_violin(aes(fill=condition), alpha=0.5)+
+  stat_summary(fun=mean)
+```
+
+---
+
+Adding a line joining the means can help make effects clearer
+
+```{r}
+ggplot(data_ldt, aes(y=rt, x=condition, colour=condition))+
+  facet_wrap(~language)+
+  geom_violin(aes(fill=condition), alpha=0.5)+
+  stat_summary(fun=mean, show.legend =FALSE)+
+  stat_summary(geom='line', fun=mean, aes(group=1), colour='black')
+```
+
+---
+
+I want to see how the distributions overlap
+
+```{r}
+ggplot(data_ldt, aes(x=rt, group=interaction(condition, language), fill=condition))+
+  facet_wrap(~language)+
+  geom_density()
+```
+
+---
+
+I want to see how the distributions overlap in the same facet
+
+```{r}
+ggplot(data_ldt, 
+       aes(x=rt, 
+           fill=interaction(condition, language)))+
+  #facet_wrap(~language)+
+  geom_density(alpha=0.5)+
+  scale_fill_discrete(name='condition')+
+  theme_bw()+theme(panel.grid = element_blank())
+```
+
+## 3 factors with `data_mc`
+
+is next up
