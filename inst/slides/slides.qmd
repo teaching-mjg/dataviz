@@ -6,26 +6,76 @@ format:
     slide-number: true
     show-slide-number: all
     scrollable: true
+    preview-link: auto
 execute: 
   echo: true
 ---
 
 ## Anscombe's Quartet
+
+`Don't jump straight to summary statistics'
+
+The following datasets all have the same mean, and the same correlation coefficient, and the correlations are equally significant (have the same $p$ value).
+
+---
+
 These datasets are all the same, right?
 
 ![](plot1.png)
 
-## Anscombe's Quartet
+---
+
 No ...
 
 ![](plot2.png)
 
-## Anscombe's Quartet
+---
+
 **LOESS** **L**ocally **E**stimated **S**catterplot **S**moothing 
 
 ![](plot3.png)
 
-## Anscombe's Quartet
+---
+
 **LOESS** with points 
 
 ![](plot4.png)
+
+---
+
+## `ggplot()` gallery
+
+Visit
+[https://r-graph-gallery.com/](https://r-graph-gallery.com/)
+
+Browse graphs to choose one you like
+
+---
+
+Distribution
+
+![](Screenshot from 2023-07-21 05-10-11.png)
+
+---
+
+Correlation
+
+![](Screenshot from 2023-07-21 05-08-19.png)
+
+---
+
+Evolution
+
+![](Screenshot from 2023-07-21 05-09-58.png)
+
+
+## data-to-viz flowchart
+
+Start by saying what kind of data you have, and use the flowchart to choose a plot that suits the type of data you have
+
+Visit
+[https://www.data-to-viz.com/](https://www.data-to-viz.com/)
+
+---
+
+![](Screenshot from 2023-07-21 05-26-02.png)

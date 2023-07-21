@@ -62,15 +62,14 @@ p2=ggplot(anscombe_quartet2, aes(x=x, y=y)) + facet_wrap(~datasetID, nrow=1) +
   ylim(c(3,16))
 
 p3=ggplot(anscombe_quartet2, aes(x=x, y=y)) + facet_wrap(~datasetID, nrow=1) +
-  geom_smooth(aes(colour=datasetID), alpha=0.2) +
-  #geom_point(pch=21, aes(fill=datasetID), show.legend = F)+
+  geom_smooth(aes(colour=datasetID), alpha=0.2, span=3) +
   theme_bw()+theme(panel.grid = element_blank(),
                    plot.margin=unit(c(0,0,0,0), "cm"), legend.position = "none",
                    axis.title = element_blank())+
   ylim(c(3,16))
 
 p4=ggplot(anscombe_quartet2, aes(x=x, y=y)) + facet_wrap(~datasetID, nrow=1) +
-  geom_smooth(aes(colour=datasetID), alpha=0.2) +
+  geom_smooth(aes(colour=datasetID), alpha=0.2, span=3) +
   geom_point(pch=21, aes(fill=datasetID), show.legend = F)+
   theme_bw()+theme(panel.grid = element_blank(),
                    plot.margin=unit(c(0,0,0,0), "cm"), legend.position = "none",
