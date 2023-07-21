@@ -11,13 +11,21 @@ execute:
 ---
 
 ## Anscombe's Quartet
+These datasets are all the same, right?
 
 ![](plot1.png)
 
 ## Anscombe's Quartet
+No ...
 
 ![](plot2.png)
 
 ## Anscombe's Quartet
+**LOESS** **L**ocally **E**stimated **S**catterplot **S**moothing 
 
 ![](plot3.png)
+
+## Anscombe's Quartet
+**LOESS** with points 
+
+![](plot4.png)
