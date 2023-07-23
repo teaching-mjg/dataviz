@@ -1,7 +1,0 @@
-beeswarm,
-dplyr,
-ggplot2,
-magrittr,
-maps,
-papaja,
-plyr,
