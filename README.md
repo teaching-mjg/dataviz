@@ -46,4 +46,5 @@ Then if you installed the vignettes:
 
 ``` r
 browseVignettes(package="dataviz")
+#> No vignettes found by browseVignettes(package = "dataviz")
 ```

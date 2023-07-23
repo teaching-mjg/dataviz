@@ -1,12 +1,6 @@
-pandoc: 2.19.2
+pandoc: 3.1.1
 pkgdown: 2.0.7
 pkgdown_sha: ~
-articles:
-  basic-plotting: basic-plotting.html
-  papaja_plots: papaja_plots.html
-  plot_distribution: plot_distribution.html
-  plot_mc_data: plot_mc_data.html
-  plot_raincloud: plot_raincloud.html
-  world_map_ggplot: world_map_ggplot.html
-last_built: 2023-07-20T10:48Z
+articles: {}
+last_built: 2023-07-23T08:36Z
 
