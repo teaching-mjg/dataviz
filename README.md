@@ -31,8 +31,8 @@ remotes::install_github("teaching-mjg/dataviz", lib="C:/ProgramData/R/win-librar
 
 ## Reference
 
-A website with reference material for the package is at
-<https://teaching-mjg.github.io/dataviz/>.
+A webpage with reference material for the package is at
+<https://teaching-mjg.github.io/dataviz/reference/index.html>.
 
 ## Example
 
