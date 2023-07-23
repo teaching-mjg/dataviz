@@ -2,7 +2,7 @@ devtools::document()                          # roxygen will flesh out the .Rd f
 devtools::build_readme()
 pkgdown::build_site_github_pages()
 devtools::install()
-
+remotes::install_github("teaching-mjg/dataviz")
 
 devtools::install(build_vignettes = TRUE)
 
