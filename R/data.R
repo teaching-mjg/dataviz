@@ -60,4 +60,19 @@
 #' @source introdataviz package from PsyTeachR
 "data_ldt"
 
+#' @title Foraging data
+#'
+#' @description A data set showing how performance evolves over trials
+#'
+#' @format A data frame:
+#' \describe{
+#'   \item{pid}{An identifier for the participant}
+#'   \item{n_hi_consumed}{DV measuring learning}
+#'   \item{trialCount}{trial number 1 to 10}
+#'   \item{trees}{manipulation: whether trees appear in the same place over trials or in different places for different trials}
+#'   \item{fruits}{manipulation: whether trees contain the same fruit over trials or fruit are distributed randomly over trees in each trial}
+#'   \item{condition}{Condiiton identifier}
+#' }
+#' @source introdataviz package from PsyTeachR
+"data_foraging"
 
